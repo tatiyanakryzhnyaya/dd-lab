@@ -5,10 +5,7 @@ import  name from './name_user.js';
 
 
 	let content;
-	
-	if($('li').hasClass('.active')){
-		 console.log("yes");
-	}else{
+	if( !(Boolean ($('li').hasClass('.active')))){
 		 content = '<div class=" card_user"><p>Пользователь не выбран</p></div>'
 	}
 	$(content).appendTo($('.second'));
@@ -22,6 +19,5 @@ export function addCard(index){
 					<div class ="email">'+use.email[index]+'</div>\
 					<div class ="phone">'+use.phone[index]+'</div>\
 				</div>'
-	console.log("yes");
 	$(content).appendTo($('.second')).animate();
 }
