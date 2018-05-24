@@ -5,44 +5,40 @@
 body {
 	font-family: sans-serif;
 }
+h1{
+    text-align: center;
+}
+ input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+ }
 .content {
 	max-width: 800px;
     background: #efefef;
-    height: 800px;
-    margin: 0 auto;
+    height: 700px;
+    margin: 30px auto;
     padding: 20px 0;
 }
-h1{
-	text-align: center;
-}
+
 .fields{
 	display: flex;
     justify-content: space-around;
+    font-size: 16px;
 }
  .first{
  	width:  40%;
-    height: 600px;
+    height: 500px;
     margin-top:  20px;
     background:  #d1d3dc85;
     float: left;
  }
-  .second{
- 	width:  40%;
-    height: max-content;
-    margin-top:  20px;
-    background:  #d1d3dc85;
-    float: right;
- }
  .search{
- 	cursor:default;
- 	margin: 20px;
- }
- input {
- 	width: 100%;
- 	padding: 10px;
+    cursor:default;
+    margin: 20px;
  }
  .list_name{
- 	height: 500px;
+    height: 400px;
     overflow-y: scroll;
     margin: 20px ;
  }
@@ -52,24 +48,33 @@ h1{
     margin: 0;
  }
  .name_user{
- 	list-style-type: none;
- 	color: #129bff;
+    list-style-type: none;
+    color: #129bff;
     cursor: pointer;
     margin: 5px 10px;
  }
  .name_user:hover{
- 	text-decoration: underline;
+    text-decoration: underline;
  }
 .active{
     text-decoration: underline;
 }
+  .second{
+ 	width:  40%;
+    height: max-content;
+    margin-top:  20px;
+    background:  #d1d3dc85;
+    float: right;
+ }
+ 
  .card_user{
     margin: 20px;
     font-family: sans-serif;
-    font-weight: bold;
-    color: #000000ab;
-    font-size: 14px;
+    font-weight: 700;
+    color: #00000085;
+    font-size: 16px;
  }
  .active_name, .photo, .email, .phone{
     padding: 5px;
+    font-size: 14px;
  }
