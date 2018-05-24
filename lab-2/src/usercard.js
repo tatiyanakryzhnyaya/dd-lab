@@ -1,22 +1,16 @@
 import $ from "jquery";
 import json from './users.js';
 
-
-let idGet = [];
-let avatarGet = [];
-let emailGet = [];
-let phoneGet = [];
+//Такая штука была сделано потому так проще обращаться к элементам объекта
+const id  = [], name  = [], avatar  = [], email  = [], phone  = [];
 for(let x in json){
-	 idGet [x] = Object.assign( json[x].id);
-	 avatarGet [x] = Object.assign( json[x].avatar);
-	 emailGet [x] = Object.assign( json[x].email);
-	 phoneGet [x] = Object.assign( json[x].phone);
+	 name  [x] =  json[x].name;
+	 id  [x] =  json[x].id;
+	 avatar  [x] =  json[x].avatar;
+	 email  [x] =  json[x].email;
+	 phone  [x] = json[x].phone;
 }
 
-const id = Object.assign({}, idGet);
-const avatar = Object.assign({}, avatarGet );
-const email = Object.assign({}, emailGet );
-const phone = Object.assign({}, phoneGet );
-const use = {id, avatar, email, phone};
+const use = {name, id, avatar, email, phone};
 
 export default use
