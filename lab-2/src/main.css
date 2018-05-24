@@ -60,7 +60,9 @@ h1{
  .name_user:hover{
  	text-decoration: underline;
  }
-
+.active{
+    text-decoration: underline;
+}
  .card_user{
     margin: 20px;
     font-family: sans-serif;

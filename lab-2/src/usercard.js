@@ -1,16 +1,16 @@
 import $ from "jquery";
-import c from './users.js';
+import json from './users.js';
 
 
 let idGet = [];
 let avatarGet = [];
 let emailGet = [];
 let phoneGet = [];
-for(let x in c){
-	 idGet [x] = Object.assign( c[x].id);
-	 avatarGet [x] = Object.assign( c[x].avatar);
-	 emailGet [x] = Object.assign( c[x].email);
-	 phoneGet [x] = Object.assign( c[x].phone);
+for(let x in json){
+	 idGet [x] = Object.assign( json[x].id);
+	 avatarGet [x] = Object.assign( json[x].avatar);
+	 emailGet [x] = Object.assign( json[x].email);
+	 phoneGet [x] = Object.assign( json[x].phone);
 }
 
 const id = Object.assign({}, idGet);

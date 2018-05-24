@@ -1,9 +1,8 @@
-import c from './users.js';
+import json from './users.js';
 
-let name_string = [];
-for(let x in c){
-	 name_string [x] = Object.assign( c[x].name);
+let name  = [];
+for(let x in json){
+	 name[x] = Object.assign( json[x].name);
 }
-const name = Object.assign({}, name_string );
 
-export default  name ;
+export default  name;

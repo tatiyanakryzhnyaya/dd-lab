@@ -1,5 +1,4 @@
 import $ from "jquery";
-import c from './users.js';
 import  name from './name_user.js';
 import {addCard} from './addCard.js'
 
@@ -15,12 +14,12 @@ export function addList(array = name ){
 	li = li.join('');
 	$(li).appendTo($('.ul'));
 	$('.ul').on('click', 'li', function(){
-			$('ul > li').filter('.active').removeClass('active');
-			$(this).addClass('active');
-			console.log($(this).index());
-			addCard($(this).index()) ;
+		$('ul > li').filter('.active').removeClass('active');
+		$(this).addClass('active');
+		addCard($(this).index()) ;
 	})
 }
+
 addList();
 
 
