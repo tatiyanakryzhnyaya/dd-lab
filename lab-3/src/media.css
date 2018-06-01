@@ -1,76 +1,25 @@
-@media(min-width: 1000px){
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
+@import '~reboot.css';
+@import './common.css';
+@import '~include-media/dist/include-media';
 
-	body{
-		
-	}
-	.text{
-		background: white;
-		padding: 10px;
-    	font-size: 12px;
-	}
+$breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
+	
+
+@include media(">desktop"){
+
+
 	.container{
 		max-width: 900px;
-    	margin: 0 auto;
-    	display: flex;
     	flex: 1 0 900px;
-   		flex-flow: column;
 	}
-	.top h1{
-		display: flex;
-		justify-content: center;
-		color: white;
-	}
-	.navigaton{
-		display: flex;
-    	justify-content: space-between;
-	}
-
-	.nav{
-		list-style: none;
-    	display: flex;
-    	flex-basis: 310px;
-    	justify-content: space-between;
-	}
-	.nav li{
-	    padding: 5px 15px 5px 15px;
-	    background: #c7c7c7;
-	    font-size: 12px;
-	}
-	.sign_in button{
-		font-size: 12px;
-		padding: 5px 15px 5px 15px;
-		border:none;
-	}
-	.sign_in input{
-		width: 510px;
-		padding: 2px;
-		border: none;
-		background: #ffffff8a;
-	}
-	.content{
-		display:flex;
-		justify-content: space-between;
+	.sign_in .inp{
+		padding: 3.4px;
 	}
 	.first{
 		flex-basis: 200px;
-		display: flex;
-    	flex-flow: column;
 	}
 	.second{
 		flex-basis: 680px;
-	}
-	.second_first .flex{
-		display: flex;
-		flex-direction: row-reverse;
-	}
-	.second_second{
-		display: flex;
-		justify-content: space-between;
 	}
 	.second_second_first{
 		flex-basis: 430px;
@@ -78,11 +27,31 @@
 	.second_second_second{
 		flex-basis: 230px;
 	}
-	.flex{
-		margin-bottom: 20px;
+}
+
+@include media(">=phone", "<=desktop"){
+	body {
+    	display: flex;
 	}
-	.foot{
-		display: flex;
-    	justify-content: space-between;
+	.container{
+		width: 100%;
+    	flex-basis: 100%;
+    	padding: 20px;
 	}
+	.sign_in .inp{
+		padding: 2px;
+	}
+	.first{
+		width: 24%;
+	}
+	.second{
+		width: 74%;
+	}
+	.second_second_first{
+		width: 64%;
+	}
+	.second_second_second{
+		width: 34%;
+	}
+
 }

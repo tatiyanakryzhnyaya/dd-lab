@@ -1,0 +1,84 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background:black;
+}
+.text{
+	background: white;
+	padding: 10px;
+	font-size: 12px;
+}
+.container{
+	margin: 0 auto;
+	display: flex;
+		flex-flow: column;
+}
+.title{
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+.navigaton{
+	display: flex;
+	justify-content: space-between;
+}
+.nav{
+	list-style: none;
+	display: flex;
+	flex-basis: 37%;
+	justify-content: space-between;
+}
+.list{
+    padding: 5px 15px 5px 15px;
+    background: #c7c7c7;
+    font-size: 1.2vw;
+}
+.sign_in{
+	flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+}
+.btn{
+	font-size: 1.2vw;
+	padding: 6px 15px 6px 15px;
+	border:none;
+	flex-basis: 13%;
+	height: min-content;
+}
+.sign_in .inp{
+	flex-basis: 84%;
+	margin-left: 10px;
+	height: min-content;
+	border: none;
+	background: #ffffff8a;
+}
+.content{
+	display:flex;
+	justify-content: space-between;
+	
+}
+.first{
+	display: flex;
+	flex-flow: column;
+}
+.second_first .flex{
+	display: flex;
+	flex-direction: row-reverse;
+}
+.second_second{
+	display: flex;
+	justify-content: space-between;
+}
+.flex{
+	margin-bottom: 20px;
+}
+.foot{
+	display: flex;
+	justify-content: space-between;
+}
+img{
+	width: 100%;
+}
