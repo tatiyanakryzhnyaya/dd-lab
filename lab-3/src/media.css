@@ -6,20 +6,27 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	
 
 @include media(">desktop"){
-
-
 	.container{
 		max-width: 900px;
     	flex: 1 0 900px;
 	}
+	.btn{
+		flex-basis: 13%;
+	}
 	.sign_in .inp{
 		padding: 3.4px;
+	}
+	.nac{
+		flex-basis: 37%;
 	}
 	.first{
 		flex-basis: 200px;
 	}
 	.second{
 		flex-basis: 680px;
+	}
+	.second_first .flex{
+		flex-direction: row-reverse;
 	}
 	.second_second_first{
 		flex-basis: 430px;
@@ -38,6 +45,12 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
     	flex-basis: 100%;
     	padding: 20px;
 	}
+	.nav{
+		flex-basis: 37%;
+	}
+	.btn{
+		flex-basis: 13%;
+	}
 	.sign_in .inp{
 		padding: 2px;
 	}
@@ -47,6 +60,12 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.second{
 		width: 74%;
 	}
+	.second_first .flex{
+		flex-direction: row-reverse;
+	}
+	.second_second{
+		
+	}
 	.second_second_first{
 		width: 64%;
 	}
@@ -54,4 +73,38 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		width: 34%;
 	}
 
+}
+
+@include media("<phone"){
+	.top{
+	    padding: 20px 20px 0 20px;
+	}
+	.navigaton{
+		flex-direction: column-reverse;
+	}
+	.nav{
+		flex-direction: column;
+	}
+	.list{
+		border-bottom: 1px solid #ededed;
+	}
+	.btn{
+		flex-basis: 100%;
+    	display: flex;
+    	margin-bottom: 10px;
+    	background: white
+	}
+	.inp{
+		display: none;
+	}
+	.content{
+		flex-direction: column;
+    	padding: 20px;
+	}
+	.second_first .flex{
+		flex-direction: column;
+	}
+	.second_second{
+		flex-direction: column;
+	}
 }

@@ -28,12 +28,11 @@ body {
 .nav{
 	list-style: none;
 	display: flex;
-	flex-basis: 37%;
 	justify-content: space-between;
 }
 .list{
     padding: 5px 15px 5px 15px;
-    background: #c7c7c7;
+    background: white;
     font-size: 1.2vw;
 }
 .sign_in{
@@ -45,7 +44,6 @@ body {
 	font-size: 1.2vw;
 	padding: 6px 15px 6px 15px;
 	border:none;
-	flex-basis: 13%;
 	height: min-content;
 }
 .sign_in .inp{
@@ -66,7 +64,6 @@ body {
 }
 .second_first .flex{
 	display: flex;
-	flex-direction: row-reverse;
 }
 .second_second{
 	display: flex;
@@ -79,6 +76,6 @@ body {
 	display: flex;
 	justify-content: space-between;
 }
-img{
+.image{
 	width: 100%;
 }
