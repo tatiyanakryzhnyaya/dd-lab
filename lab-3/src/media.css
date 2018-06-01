@@ -10,8 +10,15 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		max-width: 900px;
     	flex: 1 0 900px;
 	}
+	.nav{
+		flex-basis: 35%;
+	}
+	.list{
+		 font-size: 12px;
+	}
 	.btn{
 		flex-basis: 13%;
+		font-size: 12px;
 	}
 	.sign_in .inp{
 		padding: 3.4px;
@@ -48,8 +55,12 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.nav{
 		flex-basis: 37%;
 	}
+	.list{
+		font-size: 1.2vw;
+	}
 	.btn{
 		flex-basis: 13%;
+		font-size: 1.2vw;
 	}
 	.sign_in .inp{
 		padding: 2px;

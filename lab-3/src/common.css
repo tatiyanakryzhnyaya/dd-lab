@@ -14,7 +14,7 @@ body {
 .container{
 	margin: 0 auto;
 	display: flex;
-		flex-flow: column;
+	flex-flow: column;
 }
 .title{
 	display: flex;
@@ -33,7 +33,6 @@ body {
 .list{
     padding: 5px 15px 5px 15px;
     background: white;
-    font-size: 1.2vw;
 }
 .sign_in{
 	flex-grow: 1;
@@ -41,7 +40,6 @@ body {
 	justify-content: space-between;
 }
 .btn{
-	font-size: 1.2vw;
 	padding: 6px 15px 6px 15px;
 	border:none;
 	height: min-content;
