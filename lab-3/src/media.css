@@ -1,0 +1,88 @@
+@media(min-width: 1000px){
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body{
+		
+	}
+	.text{
+		background: white;
+		padding: 10px;
+    	font-size: 12px;
+	}
+	.container{
+		max-width: 900px;
+    	margin: 0 auto;
+    	display: flex;
+    	flex: 1 0 900px;
+   		flex-flow: column;
+	}
+	.top h1{
+		display: flex;
+		justify-content: center;
+		color: white;
+	}
+	.navigaton{
+		display: flex;
+    	justify-content: space-between;
+	}
+
+	.nav{
+		list-style: none;
+    	display: flex;
+    	flex-basis: 310px;
+    	justify-content: space-between;
+	}
+	.nav li{
+	    padding: 5px 15px 5px 15px;
+	    background: #c7c7c7;
+	    font-size: 12px;
+	}
+	.sign_in button{
+		font-size: 12px;
+		padding: 5px 15px 5px 15px;
+		border:none;
+	}
+	.sign_in input{
+		width: 510px;
+		padding: 2px;
+		border: none;
+		background: #ffffff8a;
+	}
+	.content{
+		display:flex;
+		justify-content: space-between;
+	}
+	.first{
+		flex-basis: 200px;
+		display: flex;
+    	flex-flow: column;
+	}
+	.second{
+		flex-basis: 680px;
+	}
+	.second_first .flex{
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.second_second{
+		display: flex;
+		justify-content: space-between;
+	}
+	.second_second_first{
+		flex-basis: 430px;
+	}
+	.second_second_second{
+		flex-basis: 230px;
+	}
+	.flex{
+		margin-bottom: 20px;
+	}
+	.foot{
+		display: flex;
+    	justify-content: space-between;
+	}
+}
