@@ -13,6 +13,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.nav{
 		flex-basis: 35%;
 	}
+	
 	.list{
 		 font-size: 12px;
 	}
@@ -23,24 +24,24 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.sign_in .inp{
 		padding: 3.4px;
 	}
-	.nac{
+	.nav{
 		flex-basis: 37%;
 	}
 	.first{
-		flex-basis: 200px;
+		flex-basis: 22%;
 	}
 	.second{
-		flex-basis: 680px;
+		flex-basis: 76%;
+		display: flex;
+    	flex-wrap: wrap;
 	}
-	.second_first .flex{
-		flex-direction: row-reverse;
-	}
-	.second_second_first{
-		flex-basis: 430px;
-	}
-	.second_second_second{
-		flex-basis: 230px;
-	}
+	.second .flex:first-child{
+		display: flex;
+    	flex-direction: row-reverse;
+
+    }
+
+
 }
 
 @include media(">=phone", "<=desktop"){
@@ -65,25 +66,24 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.sign_in .inp{
 		padding: 2px;
 	}
-	.first{
-		width: 24%;
-	}
 	.second{
 		width: 74%;
 	}
-	.second_first .flex{
-		flex-direction: row-reverse;
+	.first{
+		flex-basis: 22%;
 	}
-	.second_second{
-		
+	.second{
+		flex-basis: 76%;
+		display: flex;
+    	flex-wrap: wrap;
 	}
-	.second_second_first{
-		width: 64%;
-	}
-	.second_second_second{
-		width: 34%;
-	}
+	.second .flex:first-child{
+		display: flex;
+    	flex-direction: row-reverse;
 
+    }
+
+	
 }
 
 @include media("<phone"){

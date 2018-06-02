@@ -30,6 +30,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 }
+
 .list{
     padding: 5px 15px 5px 15px;
     background: white;
@@ -60,15 +61,20 @@ body {
 	display: flex;
 	flex-flow: column;
 }
-.second_first .flex{
-	display: flex;
-}
-.second_second{
-	display: flex;
-	justify-content: space-between;
-}
 .flex{
 	margin-bottom: 20px;
+}
+.second{
+	justify-content: space-between;
+}
+.second_second{
+	flex-basis: 64%;
+}
+.second_third{
+	flex-basis: 34%;
+}
+.second_third>.flex{
+	flex-wrap: wrap;
 }
 .foot{
 	display: flex;
