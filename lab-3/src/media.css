@@ -1,0 +1,121 @@
+@import '~reboot.css';
+@import './common.css';
+@import '~include-media/dist/include-media';
+
+$breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
+	
+
+@include media(">desktop"){
+	.container{
+		max-width: 900px;
+    	flex: 1 0 900px;
+	}
+	.nav{
+		flex-basis: 35%;
+	}
+	
+	.list{
+		 font-size: 12px;
+	}
+	.btn{
+		flex-basis: 13%;
+		font-size: 12px;
+	}
+	.sign_in .inp{
+		padding: 3.4px;
+	}
+	.nav{
+		flex-basis: 37%;
+	}
+	.first{
+		flex-basis: 22%;
+	}
+	.second{
+		flex-basis: 76%;
+		display: flex;
+    	flex-wrap: wrap;
+	}
+	.second .flex:first-child{
+		display: flex;
+    	flex-direction: row-reverse;
+
+    }
+
+
+}
+
+@include media(">=phone", "<=desktop"){
+	body {
+    	display: flex;
+	}
+	.container{
+		width: 100%;
+    	flex-basis: 100%;
+    	padding: 20px;
+	}
+	.nav{
+		flex-basis: 37%;
+	}
+	.list{
+		font-size: 1.2vw;
+	}
+	.btn{
+		flex-basis: 13%;
+		font-size: 1.2vw;
+	}
+	.sign_in .inp{
+		padding: 2px;
+	}
+	.second{
+		width: 74%;
+	}
+	.first{
+		flex-basis: 22%;
+	}
+	.second{
+		flex-basis: 76%;
+		display: flex;
+    	flex-wrap: wrap;
+	}
+	.second .flex:first-child{
+		display: flex;
+    	flex-direction: row-reverse;
+
+    }
+
+	
+}
+
+@include media("<phone"){
+	.top{
+	    padding: 20px 20px 0 20px;
+	}
+	.navigaton{
+		flex-direction: column-reverse;
+	}
+	.nav{
+		flex-direction: column;
+	}
+	.list{
+		border-bottom: 1px solid #ededed;
+	}
+	.btn{
+		flex-basis: 100%;
+    	display: flex;
+    	margin-bottom: 10px;
+    	background: white
+	}
+	.inp{
+		display: none;
+	}
+	.content{
+		flex-direction: column;
+    	padding: 20px;
+	}
+	.second_first .flex{
+		flex-direction: column;
+	}
+	.second_second{
+		flex-direction: column;
+	}
+}
