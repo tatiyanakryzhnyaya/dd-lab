@@ -39,6 +39,7 @@ body {
 	flex-grow: 1;
 	display: flex;
 	justify-content: space-between;
+	height: 30px;
 }
 .btn{
 	padding: 6px 15px 6px 15px;
@@ -67,12 +68,7 @@ body {
 .second{
 	justify-content: space-between;
 }
-.second_second{
-	flex-basis: 64%;
-}
-.second_third{
-	flex-basis: 34%;
-}
+
 .second_third>.flex{
 	flex-wrap: wrap;
 }
