@@ -39,7 +39,6 @@ body {
 	flex-grow: 1;
 	display: flex;
 	justify-content: space-between;
-	height: 30px;
 }
 .btn{
 	padding: 6px 15px 6px 15px;
@@ -52,6 +51,7 @@ body {
 	height: min-content;
 	border: none;
 	background: #ffffff8a;
+	margin-right: 2%;
 }
 .content{
 	display:flex;

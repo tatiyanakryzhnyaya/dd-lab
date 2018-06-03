@@ -6,6 +6,9 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	
 
 @include media(">desktop"){
+	body {
+		background:black;
+	}
 	.container{
 		max-width: 900px;
     	flex: 1 0 900px;
@@ -23,6 +26,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	}
 	.sign_in .inp{
 		padding: 3.4px;
+		
 	}
 	.nav{
 		flex-basis: 37%;
@@ -53,6 +57,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 @include media(">=phone", "<=desktop"){
 	body {
     	display: flex;
+		background:black;
 	}
 	.container{
 		width: 100%;
@@ -69,6 +74,9 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		flex-basis: 13%;
 		font-size: 1.2vw;
 	}
+	.sign_in{
+		height: 30px;
+	}
 	.sign_in .inp{
 		padding: 2px;
 	}
@@ -81,6 +89,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.second .flex:first-child{
 		display: flex;
     	flex-direction: column;
+    	flex-basis: 100%;
 
     }
     	.first, .second, .second_second, .second_third{
@@ -91,6 +100,9 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 }
 
 @include media("<phone"){
+	body {
+		background:black;
+	}
 	.top{
 	    padding: 20px 20px 0 20px;
 	}
@@ -107,7 +119,8 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		flex-basis: 100%;
     	display: flex;
     	margin-bottom: 10px;
-    	background: white
+    	background: white;
+    	border-bottom: 1px solid #ededed;
 	}
 	.inp{
 		display: none;
@@ -116,8 +129,6 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		flex-direction: column;
     	padding: 20px;
 	}
-	
-
 	.second_first .flex{
 		flex-direction: column;
 	}
