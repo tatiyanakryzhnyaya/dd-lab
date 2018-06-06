@@ -5,8 +5,9 @@
       <EventsType :index="i.event.type-1"></EventsType>
           <div class="Event__ul__li__dateTime">
             <div class="Event__ul__li__dateTime__time"><p class="event__ul__li__dateTime__time__p">{{i.event.time}}</p></div>
-            <div class="Eevent__ul__li__dateTime__date"><p class="event__ul__li__dateTime__time__p">{{i.event.date | myFilter}}</p></div>
+            <div class="Event__ul__li__dateTime__date"><p class="event__ul__li__dateTime__time__p">{{i.event.date | myFilter}}</p></div>
           </div>
+          <div class="Event__ul__li__description"><p>{{ i.event.description }}</p></div>
           <div class="Event__ul__li__person">
             <img class="Event__ul__li__person__img" v-bind:src="i.person.image" />
             <div>
@@ -51,12 +52,14 @@ export default {
   *{
     margin: 0;
     padding: 0;
-    box-sizing:border-box
+    box-sizing:border-box;
+  }
+  body{ 
+  	 
   }
   .Event{
     display:flex;
     justify-content: flex-end;
-    background:#ecf0fc;
     flex-basis: 80%;
     &__ul{
       display: flex;
@@ -68,13 +71,17 @@ export default {
         background:white;
         list-style:none;
         flex-basis: 300px;
-        border:1px solid black;
+        border-bottom:1px solid #d8d8d8;
         display: flex;
         flex-direction:column;
         height: 290px;
         margin:20px;
-        padding:20px; 
+        padding:20px;
+          &__description{
+          	display:none;
+          } 
           &__dateTime{
+          	margin: auto;
             display:flex;
             flex-direction:column;
             &__time{
@@ -101,6 +108,8 @@ export default {
               background: white;
               border: 1px solid white;
               margin-right:20px;
+              border-bottom: 1px solid #d8d8d8;
+              border-top: 1px solid #d8d8d8;
             }
             &__name{
               display: flex;

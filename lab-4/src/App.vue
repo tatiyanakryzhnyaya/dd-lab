@@ -31,7 +31,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   display:flex;
-  background: #ecf0fc;
   padding-top: 30px;
 }
 </style>
