@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Event></Event>
+    <SideBar></SideBar>
     <router-view/>
   </div>
 </template>
@@ -8,6 +8,7 @@
 <script>
 import Event from './components/Event'
 import EventsType from './components/EventsType'
+import SideBar from './components/SideBar'
 export default {
   name: 'App',
   data () {
@@ -16,7 +17,7 @@ export default {
     }
   },
   components: {
-    Event, EventsType
+    Event, EventsType, SideBar
   }
 }
 </script>
@@ -29,5 +30,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display:flex;
+  background: #ecf0fc;
+  padding-top: 30px;
 }
 </style>

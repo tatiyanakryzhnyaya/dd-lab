@@ -1,27 +1,39 @@
 <template>
   <div class="EventsType">
-    <ul>
-      <li v-for="item in type" :key="item.id">{{ item.name }}</li>
-    </ul>
+    {{ type[index].name }}
   </div>
 </template>
 
 <script>
 export default {
+
   name: 'EventsType',
+  props: {
+  	index: Number
+  },
   data () {
     return {
       type: []
     }
   },
+  components:{
+  	Event
+  },
+
   created () {
   // Пример вызова api метода из компонента
     this.api.getEventType()
       .then(({ data }) => {
         console.log('Fetched data from API:')
-        console.log(data)
         this.type = data
       })
   }
 }
 </script>
+
+<style lang="scss">
+	.EventsType{
+		display: flex;
+        justify-content: left;
+	}
+</style>
