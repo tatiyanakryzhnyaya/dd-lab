@@ -23,7 +23,13 @@ export default {
 </script>
 
 <style>
+*{
+  box-sizing:border0box;
+  margin:0;
+  padding:0;
+}
 #app {
+  background: #f8fdff;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

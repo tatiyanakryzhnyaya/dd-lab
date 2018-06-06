@@ -19,6 +19,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App, EventsType, Event },
+  components: { App, EventsType, Event, SideBar },
   template: '<App/>'
 })

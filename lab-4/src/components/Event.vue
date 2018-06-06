@@ -1,20 +1,17 @@
 <template>
   <div class="Event">
-    <ul class="Event__ul">
-      <li class="Event__ul__li" v-for="i in event" :key="i.id" v-bind:class="{important: i.important}">
-      <EventsType :index="i.event.type-1"></EventsType>
-          <div class="Event__ul__li__dateTime">
-            <div class="Event__ul__li__dateTime__time"><p class="event__ul__li__dateTime__time__p">{{i.event.time}}</p></div>
-            <div class="Event__ul__li__dateTime__date"><p class="event__ul__li__dateTime__time__p">{{i.event.date | myFilter}}</p></div>
-          </div>
-          <div class="Event__ul__li__description"><p>{{ i.event.description }}</p></div>
-          <div class="Event__ul__li__person">
-            <img class="Event__ul__li__person__img" v-bind:src="i.person.image" />
-            <div>
-            <div class="Event__ul__li__person__name">{{ i.person.name }}</div>
-            <div class="Event__ul__li__person__job">{{ i.person.job }}</div>
-            </div>
-          </div>
+    <ul class="Event__ulToday Event__ul ">
+    <h1 class="Event__title">Сегодня</h1>
+      <li class="Event__ulToday__li Event__ul__li" v-for="i in event" :key="i.id" v-bind:class="[{ important: i.important}, { today: boolToday(i.event.date)}, { tomorrow: boolTomorrow(i.event.date)}]" 
+      v-if="boolToday(i.event.date) && !boolTomorrow(i.event.date)">
+      <Day :index="i.event.type-1" :date="i.event.date" :time="i.event.time" :name="i.person.name" :description="i.event.description" :job="i.person.job" :image="i.person.image" ></Day>
+      </li>
+    </ul>
+    <ul class="Event__ulTomorrow Event__ul">
+      <h1 class="Event__title">Завтра</h1>
+      <li class="Event__ulTomorrow__li Event__ul__li" v-for="i in event" :key="i.id" v-bind:class="[{ important: i.important}, { today: boolToday(i.event.date)},{ tomorrow: boolTomorrow(i.event.date)}]" 
+      v-if="!boolToday(i.event.date) && boolTomorrow(i.event.date)">
+       <Day :index="i.event.type-1" :date="i.event.date" :time="i.event.time" :name="i.person.name" :description="i.event.description" :job="i.person.job" :image="i.person.image" ></Day>
       </li>
     </ul>
   </div>
@@ -23,107 +20,76 @@
 <script>
 import moment from 'moment'
 import EventsType from './EventsType'
+import Day from './Day'
 export default {
   name: 'Event',
   data () {
     return {
-      event: []
+      event: [],
+      count: 0,
+      today: moment(new Date()),
+      tomorrow: moment(new Date()).add(1, 'days')
     }
   },
   components: {
-    EventsType
+    EventsType, Day
   },
   created () {
     this.api.getEvents()
       .then(({ data }) => {
-        console.log('Fetched data from API:')
-        console.log(data)
         this.event = data
       })
   },
   filters: {
     myFilter: function (value) {
-      return moment(String(value)).format('MM.DD.YY')
+      return moment(String(value)).format('DD.MM.YY')
+    }
+  },
+  methods: {
+    str: function (value) {
+      return '"' + value + '"'
+    },
+    boolToday: function (val2) {
+      if (this.today.format('DD.MM.YY') === moment(String(val2)).format('DD.MM.YY')) {
+        return true
+      } else {
+        return false
+      }
+    },
+    boolTomorrow: function (val2) {
+      if (this.tomorrow.format('DD.MM.YY') === moment(String(val2)).format('DD.MM.YY')) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 }
 </script>
-<style  lang="scss" >
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing:border-box;
-  }
-  body{ 
-  	 
-  }
-  .Event{
-    display:flex;
-    justify-content: flex-end;
-    flex-basis: 80%;
-    &__ul{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      
-      &__li{
-        background:white;
-        list-style:none;
-        flex-basis: 300px;
-        border-bottom:1px solid #d8d8d8;
-        display: flex;
-        flex-direction:column;
-        height: 290px;
-        margin:20px;
-        padding:20px;
-          &__description{
-          	display:none;
-          } 
-          &__dateTime{
-          	margin: auto;
-            display:flex;
-            flex-direction:column;
-            &__time{
-              font-size: 33px;
-              font-weight: bold;
-              margin: 10px;
-              &__p{
-                margin:0;
-              }
-            }
-            &__date{
-              font-weight: bold;
-              color: grey;
-            }
-          }
-          &__person{
-            margin: auto 0 0 0;
-            align-items: center;
-            font-size: 12px;
-            display: flex;
-            flex-direction: row;
-            margin-left: 10px;
-            &__img{
-              background: white;
-              border: 1px solid white;
-              margin-right:20px;
-              border-bottom: 1px solid #d8d8d8;
-              border-top: 1px solid #d8d8d8;
-            }
-            &__name{
-              display: flex;
-              font-weight: bold;
-            }
-            &__job{
-              text-align: left;
-            }
-          }
-      }
-        .important{
-          background:#e38b8b;
-          color:white;
-        }
-    }
-  }
+<style  lang="scss" scoped>
+.Event{
+	flex-basis:100%;
+	&__ul{
+		flex-basis:47%;
+		&__li{
+			background:white;
+			list-style: none;
+			display:flex;
+			flex-basis:100%;
+			padding:40px;
+			margin:20px;
+
+		}
+	}
+	&__title{
+		border-bottom:1px solid;
+		padding:15px 0;
+		display: flex;
+	}
+
+}
+.important{
+	background:#f7a7a7;
+	color:white;
+}
 </style>
