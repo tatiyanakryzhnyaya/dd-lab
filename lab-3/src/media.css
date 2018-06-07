@@ -35,6 +35,16 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.first{
 		flex-basis: 22%;
 	}
+	.first .flex{
+		display: flex;
+	    flex: 1;
+	    flex-direction: column;
+	}
+	.second_third .flex{
+		display: flex;
+	    flex: 1;
+	    flex-direction: column;
+	}
 	.second{
 		flex-basis: 76%;
 		display: flex;
@@ -45,12 +55,20 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
     	flex-direction: row-reverse;
 
     }
-	.second_second{
+	.second_second{    
+		display: flex;
+        flex-direction: column;
 		flex-basis: 64%;
 	}
 	.second_third{
 		flex-basis: 34%;
-	}
+	    display: flex;
+        flex-direction: column;
+     }
+     .second_third{
+     	display: flex;
+     	    flex-direction: column;
+     }
 
 }
 
@@ -80,7 +98,11 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.sign_in .inp{
 		padding: 2px;
 	}
-
+    .first .flex{
+    	flex-direction: column;
+        display: flex;
+        flex: 1;
+    }
 
 	.second{
 		display: flex;
