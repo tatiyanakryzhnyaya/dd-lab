@@ -24,10 +24,31 @@
         </li>
       </ul>
     </div>
+    <div class ="AllActivity__fullDescription" v-else>
+      <ul class="AllActivity__fullDescription__ul">
+        <li class="AllActivity__fullDescription__ul__li" v-if=" event.length > 0"  v-for="i in getName" :key="i.id" v-bind:class="{ important: i.important}">
+          <div class="AllActivity__fullDescription__ul__li__dateTime">
+            <span class="AllActivity__fullDescription__ul__li__dateTime__time__p">{{i.event.date | dataFilter}} &minus; </span>
+            <span class="AllActivity__fullDescription__ul__li__dateTime__date__p"> &nbsp;{{i.event.time}}</span>
+          </div>
+          <div class="EventsType" v-if="types.length>0">{{types[i.event.type-1].name}}</div>
+          <div class="btn"><button class="delete" v-on:click="del(i.id)" >Удалить</button></div>
+          <div class="AllActivity__fullDescription__ul__li__description">
+            <p class="AllActivity__fullDescription__ul__li__description__p">{{i.event.description }}</p>
+          </div>
+          <div class="AllActivity__fullDescription__ul__li__person">
+            <img class="AllActivity__fullDescription__ul__li__person__img" v-bind:src=" i.person.image" />
+            <div>
+              <div class="AllActivity__fullDescription__ul__li__person__name">{{ i.person.name }}</div>
+              <div class="AllActivity__fullDescription__ul__li__person__job">{{  i.person.job }}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
-import EventsType from './EventsType'
 import moment from 'moment'
 export default {
   name: 'AllActivity',
@@ -42,7 +63,7 @@ export default {
     }
   },
   components: {
-    EventsType, Event
+    Event
   },
   mounted () {
     this.load()
@@ -61,7 +82,8 @@ export default {
         return false
       }
     },
-    bool: function (value, message) {
+    boolName: function (value, message) {
+      console.log(message)
       let reg = new RegExp('(' + message + ')+', 'ig')
       if (value.match(reg)) {
         return true
@@ -71,17 +93,12 @@ export default {
     },
     del: function (id) {
       this.api.eventDelete(id)
-        .then(({ data }) => {
-          this.event = data
-          console.log(id)
-          this.load()
-        })
+        .then(this.load())
     },
     load: function () {
       this.api.getEvents()
         .then(({ data }) => {
           this.event = data
-          console.log(data)
         })
     },
     type: function () {
@@ -94,6 +111,9 @@ export default {
   computed: {
     getToday () {
       return this.event.filter(x => this.boolToday(x.event.date))
+    },
+    getName () {
+      return this.event.filter(x => this.boolName(x.person.name,this.message))
     }
   }
 }

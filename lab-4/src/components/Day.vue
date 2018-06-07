@@ -1,16 +1,16 @@
 <template>
   <div class="Day">
-        <EventsType :index="index" ></EventsType>
-          <div class="Event__ul__li__dateTime">
-            <div class="Event__ul__li__dateTime__time"><p class="Event__ul__li__dateTime__time__p">{{ time }}</p></div>
-            <div class="Event__ul__li__dateTime__date"><p class="Event__ul__li__dateTime__date__p">{{ date | myFilter}}</p></div>
+        <div class="Day__DaysType" v-if="types.length>0" >{{types[index].name}}</div>
+          <div class="Day__ul__li__dateTime">
+            <div class="Day__ul__li__dateTime__time"><p class="Day__ul__li__dateTime__time__p">{{ time }}</p></div>
+            <div class="Day__ul__li__dateTime__date"><p class="Day__ul__li__dateTime__date__p">{{ date | myFilter}}</p></div>
           </div>
-          <div class="Event__ul__li__description"><p>{{ description }}</p></div>
-          <div class="Event__ul__li__person">
-            <img class="Event__ul__li__person__img" v-bind:src=" image" />
+          <div class="Day__ul__li__description"><p>{{ description }}</p></div>
+          <div class="Day__ul__li__person">
+            <img class="Day__ul__li__person__img" v-bind:src=" image" />
             <div>
-              <div class="Event__ul__li__person__name">{{ name }}</div>
-              <div class="Event__ul__li__person__job">{{ job }}</div>
+              <div class="Day__ul__li__person__name">{{ name }}</div>
+              <div class="Day__ul__li__person__job">{{ job }}</div>
             </div>
        </div>
   </div>
@@ -18,22 +18,30 @@
 
 <script>
 import moment from 'moment'
-import EventsType from './EventsType'
 export default {
   name: 'Day',
   props: ['index', 'time', 'date', 'name', 'job', 'image', 'description'],
   data () {
     return {
       event: [],
-      count: 0
+      count: 0,
+      types: []
     }
   },
-  components: {
-    EventsType
+  mounted () {
+    this.type()
   },
   filters: {
     myFilter: function (value) {
       return moment(String(value)).format('DD.MM.YY')
+    }
+  },
+  methods: {
+    type: function () {
+      this.api.getEventType()
+        .then(({ data }) => {
+          this.types = data
+        })
     }
   }
 }
@@ -44,24 +52,24 @@ export default {
   flex-basis:100%;
   flex-direction:column;
 }
-.EventsType{
+.DaysType{
   font-weight:bold;
 }
 .important{
-  .Event__ul__li__dateTime__time__p{
+  .Day__ul__li__dateTime__time__p{
     color:white;
   }
-  .Event__ul__li__dateTime__date__p{
+  .Day__ul__li__dateTime__date__p{
     color:grey;
   }
-  .Event__ul__li__person__job{
+  .Day__ul__li__person__job{
     color:#ffffff6b;
   }
-  .EventsType{
+  .DaysType{
     color:white;
   }
 }
-.Event{
+.Day{
   &__ul{
     &__li{
       &__description{
