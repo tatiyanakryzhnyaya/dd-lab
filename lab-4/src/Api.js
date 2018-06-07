@@ -21,10 +21,9 @@ export class Api {
       url: '/events'
     })
   };
-  eventDelete () {
-    return this.instance.request({
-      type: 'delete',
-      url: '/events/:id'
+  eventDelete (id) {
+    return this.instance.delete({
+      url: '/events/' + id
     })
   };
   // Метод для регистрации класса в прототипе Vue

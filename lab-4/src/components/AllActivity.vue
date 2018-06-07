@@ -1,15 +1,16 @@
 <template>
-  <div class="AllActivity">
-    <input type="text" class="AllActivity__filter" placeholder="Поиск по имени"/>
-    <div class ="AllActivity__fullDescription">
-     <ul class="AllActivity__fullDescription__ul">
-      <li class="AllActivity__fullDescription__ul__li" v-for="i in event" :key="i.id" v-bind:class="{ important: i.important}">
-       
+  <div class="AllActivity" >
+    <h1 class="AllActivity__main">Сегодня {{getToday.length}} мероприятий</h1>
+    <input type="text" class="AllActivity__filter" v-model="message" placeholder="Поиск по имени"></input>
+    <div class ="AllActivity__fullDescription" v-if="!message">
+      <ul class="AllActivity__fullDescription__ul">
+        <li class="AllActivity__fullDescription__ul__li" v-if=" event.length > 0"  v-for="i in event" :key="i.id" v-bind:class="{ important: i.important}">
           <div class="AllActivity__fullDescription__ul__li__dateTime">
-            <span class="AllActivity__fullDescription__ul__li__dateTime__time__p" >{{ i.event.date | myFilter }} &minus; </span> 
-            <span class="AllActivity__fullDescription__ul__li__dateTime__date__p"> &nbsp;{{ i.event.time }}</span>
+            <span class="AllActivity__fullDescription__ul__li__dateTime__time__p">{{i.event.date | dataFilter}} &minus; </span>
+            <span class="AllActivity__fullDescription__ul__li__dateTime__date__p"> &nbsp;{{i.event.time}}</span>
           </div>
-          <EventsType :index="i.event.type-1" ></EventsType>
+          <div class="EventsType" v-if="types.length>0">{{types[i.event.type-1].name}}</div>
+          <div class="btn"><button class="delete" v-on:click="del(i.id)" >Удалить</button></div>
           <div class="AllActivity__fullDescription__ul__li__description">
             <p class="AllActivity__fullDescription__ul__li__description__p">{{i.event.description }}</p>
           </div>
@@ -20,8 +21,8 @@
               <div class="AllActivity__fullDescription__ul__li__person__job">{{  i.person.job }}</div>
             </div>
           </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -32,6 +33,8 @@ export default {
   name: 'AllActivity',
   data () {
     return {
+      message: '',
+      types: [],
       event: [],
       count: 0,
       today: moment(new Date()),
@@ -39,23 +42,69 @@ export default {
     }
   },
   components: {
-    EventsType
+    EventsType, Event
   },
-  created () {
-    this.api.getEvents()
-      .then(({ data }) => {
-        this.event = data
-      })
+  mounted () {
+    this.load()
+    this.type()
   },
   filters: {
-    myFilter: function (value) {
+    dataFilter: function (value) {
       return moment(String(value)).format('DD.MM.YY')
+    }
+  },
+  methods: {
+    boolToday: function (val2) {
+      if (this.today.format('DD.MM.YY') === moment(String(val2)).format('DD.MM.YY')) {
+        return true
+      } else {
+        return false
+      }
+    },
+    bool: function (value, message) {
+      let reg = new RegExp('(' + message + ')+', 'ig')
+      if (value.match(reg)) {
+        return true
+      } else {
+        return false
+      }
+    },
+    del: function (id) {
+      this.api.eventDelete(id)
+        .then(({ data }) => {
+          this.event = data
+          console.log(id)
+          this.load()
+        })
+    },
+    load: function () {
+      this.api.getEvents()
+        .then(({ data }) => {
+          this.event = data
+          console.log(data)
+        })
+    },
+    type: function () {
+      this.api.getEventType()
+        .then(({ data }) => {
+          this.types = data
+        })
+    }
+  },
+  computed: {
+    getToday () {
+      return this.event.filter(x => this.boolToday(x.event.date))
     }
   }
 }
 </script>
 <style lang="scss" >
 .AllActivity{
+  &__main{
+    font-size: 15px;
+    color: gray;
+    margin-bottom: 20px;
+  }
   &__filter{
     padding: 10px;
     font-size: 16px;
@@ -63,14 +112,16 @@ export default {
   display: flex;
   flex-basis:80%;
   flex-direction:column;
-  padding: 20px;
-  margin: 40px;
+  padding:20px;
+  padding-top: 0;
+  margin: 40px 20px;
+  margin-top: 10px;
   &__fullDescription{
     display:flex;
     &__ul{
       padding:0;
-      &__li{ 
-        background:white; 
+      &__li{
+        background:white;
         margin: 20px 0;
         padding: 20px;
         flex-wrap: wrap;
@@ -96,10 +147,20 @@ export default {
             }
           }
         }
+        .delete{
+          background: white;
+          border: none;
+          color: black;
+          font-weight: bold;
+          cursor:pointer;
+          &:hover{
+            color:grey !important;
+          }
+        }
         .EventsType{
             height: max-content;
-            padding: 3px;
             font-weight:bold;
+            margin-right:20px;
           }
         &__description{
           text-align: left;
@@ -124,17 +185,28 @@ export default {
         }
       }
     }
-  }        
+  }
   .important{
+    .delete{
+      background:#f7a7a7;
+      color:white;
+      padding: 4px;
+    }
+
     background:#f7a7a7;
     color:white;
     .AllActivity__fullDescription__ul__li__dateTime{
       background:white;
       color:black;
       height: max-content;
-    padding: 3px;
+      padding: 3px;
+    }
+    .EventsType{
+      padding: 3px;
     }
   }
-
+.none{
+  display:none;
+}
 }
 </style>

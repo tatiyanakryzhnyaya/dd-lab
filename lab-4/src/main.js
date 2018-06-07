@@ -4,9 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { Api } from './Api'
-import EventsType from './components/EventsType'
-import Event from './components/Event'
-import SideBar from './components/SideBar'
 const api = new Api()
 
 // Регистрируем модуль в Vue
@@ -19,6 +16,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App, EventsType, Event, SideBar },
+  components: { App },
   template: '<App/>'
 })

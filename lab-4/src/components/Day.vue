@@ -2,15 +2,15 @@
   <div class="Day">
         <EventsType :index="index" ></EventsType>
           <div class="Event__ul__li__dateTime">
-            <div class="Event__ul__li__dateTime__time"><p class="Event__ul__li__dateTime__time__p">{{ time}}</p></div>
+            <div class="Event__ul__li__dateTime__time"><p class="Event__ul__li__dateTime__time__p">{{ time }}</p></div>
             <div class="Event__ul__li__dateTime__date"><p class="Event__ul__li__dateTime__date__p">{{ date | myFilter}}</p></div>
           </div>
-          <div class="Event__ul__li__description"><p>{{  description }}</p></div>
+          <div class="Event__ul__li__description"><p>{{ description }}</p></div>
           <div class="Event__ul__li__person">
             <img class="Event__ul__li__person__img" v-bind:src=" image" />
             <div>
               <div class="Event__ul__li__person__name">{{ name }}</div>
-              <div class="Event__ul__li__person__job">{{  job }}</div>
+              <div class="Event__ul__li__person__job">{{ job }}</div>
             </div>
        </div>
   </div>

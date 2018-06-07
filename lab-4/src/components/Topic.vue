@@ -5,7 +5,6 @@
 </template>
 <script>
 import Event from './Event'
-import moment from 'moment'
 export default{
   name: 'Topic',
   components: {
@@ -13,10 +12,7 @@ export default{
   },
   data () {
     return {
-      event: [],
-      today: moment(new Date()),
-      tomorrow: moment(new Date()).add(1, 'days'),
-      countToday: 0
+      event: []
     }
   }
 }

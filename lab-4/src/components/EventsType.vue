@@ -1,5 +1,5 @@
 <template>
-  <div class="EventsType" v-if="type.length !== 0">
+  <div class="EventsType" v-if="type.length !== 0 ">
     {{ type[index].name }}
   </div>
 </template>
@@ -9,7 +9,8 @@ export default {
 
   name: 'EventsType',
   props: {
-    index: Number
+    index: Number,
+    message: String
   },
   data () {
     return {

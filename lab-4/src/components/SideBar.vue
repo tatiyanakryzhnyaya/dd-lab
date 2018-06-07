@@ -14,7 +14,7 @@ export default {
 </script>
 <style lang="scss">
   .SideBar{
-    flex-basis:25%;
+    flex-basis:300px;
     &__ul{
         font-size: 22px;
         margin: 10px 0;
