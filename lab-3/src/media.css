@@ -65,10 +65,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	    display: flex;
         flex-direction: column;
      }
-     .second_third{
-     	display: flex;
-     	    flex-direction: column;
-     }
+
 
 }
 
@@ -114,9 +111,12 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
     	flex-basis: 100%;
 
     }
-    	.first, .second, .second_second, .second_third{
+    .first, .second, .second_second, .second_third{
 		flex-basis: 49%;
 	}
+	 .third{
+     	margin: 1px 0;
+     }
 
 	
 }
