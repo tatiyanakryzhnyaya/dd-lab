@@ -6,18 +6,16 @@
 </template>
 
 <script>
-import Event from './components/Event'
-import EventsType from './components/EventsType'
 import SideBar from './components/SideBar'
 export default {
   name: 'App',
+  components: {
+    SideBar
+  },
   data () {
     return {
       events: []
     }
-  },
-  components: {
-    Event, EventsType, SideBar
   }
 }
 </script>
@@ -30,7 +28,7 @@ export default {
 }
 #app {
   background: #f8fdff;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -38,5 +36,10 @@ export default {
   margin-top: 60px;
   display:flex;
   padding-top: 30px;
+}
+@media(max-width: 900px){
+  #app{
+    flex-direction: column;
+  }
 }
 </style>

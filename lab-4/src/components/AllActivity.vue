@@ -1,46 +1,24 @@
 <template>
   <div class="AllActivity" >
-    <h1 class="AllActivity__main">Сегодня {{getToday.length}} мероприятий</h1>
-    <input type="text" class="AllActivity__filter" v-model="message" placeholder="Поиск по имени"></input>
-    <div class ="AllActivity__fullDescription" v-if="!message">
-      <ul class="AllActivity__fullDescription__ul">
-        <li class="AllActivity__fullDescription__ul__li" v-if=" event.length > 0"  v-for="i in event" :key="i.id" v-bind:class="{ important: i.important}">
-          <div class="AllActivity__fullDescription__ul__li__dateTime">
-            <span class="AllActivity__fullDescription__ul__li__dateTime__time__p">{{i.event.date | dataFilter}} &minus; </span>
-            <span class="AllActivity__fullDescription__ul__li__dateTime__date__p"> &nbsp;{{i.event.time}}</span>
+    <h1 class="main">Сегодня {{getToday.length}} мероприятий</h1>
+    <input type="text" class="filter" v-model="message" placeholder="Поиск по имени"/>
+    <div class ="fullDescription" >
+      <ul class="ul" v-if=" event.length > 0">
+        <li class="li"   v-for="i in getName" :key="i.id" v-bind:class="{ important: i.important}">
+          <div class="dateTime">
+            <span class="time p">{{i.event.date | dataFilter}} &minus; </span>
+            <span class="date p"> &nbsp;{{i.event.time}}</span>
           </div>
           <div class="EventsType" v-if="types.length>0">{{types[i.event.type-1].name}}</div>
-          <div class="btn"><button class="delete" v-on:click="del(i.id)" >Удалить</button></div>
-          <div class="AllActivity__fullDescription__ul__li__description">
-            <p class="AllActivity__fullDescription__ul__li__description__p">{{i.event.description }}</p>
+          <div class="btn"><button class="delete" v-on:click="deleteEvent(i.id)">Удалить</button></div>
+          <div class="description">
+            <p class="p">{{i.event.description }}</p>
           </div>
-          <div class="AllActivity__fullDescription__ul__li__person">
-            <img class="AllActivity__fullDescription__ul__li__person__img" v-bind:src=" i.person.image" />
+          <div class="person">
+            <img class="img" v-bind:src=" i.person.image" />
             <div>
-              <div class="AllActivity__fullDescription__ul__li__person__name">{{ i.person.name }}</div>
-              <div class="AllActivity__fullDescription__ul__li__person__job">{{  i.person.job }}</div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class ="AllActivity__fullDescription" v-else>
-      <ul class="AllActivity__fullDescription__ul">
-        <li class="AllActivity__fullDescription__ul__li" v-if=" event.length > 0"  v-for="i in getName" :key="i.id" v-bind:class="{ important: i.important}">
-          <div class="AllActivity__fullDescription__ul__li__dateTime">
-            <span class="AllActivity__fullDescription__ul__li__dateTime__time__p">{{i.event.date | dataFilter}} &minus; </span>
-            <span class="AllActivity__fullDescription__ul__li__dateTime__date__p"> &nbsp;{{i.event.time}}</span>
-          </div>
-          <div class="EventsType" v-if="types.length>0">{{types[i.event.type-1].name}}</div>
-          <div class="btn"><button class="delete" v-on:click="del(i.id)" >Удалить</button></div>
-          <div class="AllActivity__fullDescription__ul__li__description">
-            <p class="AllActivity__fullDescription__ul__li__description__p">{{i.event.description }}</p>
-          </div>
-          <div class="AllActivity__fullDescription__ul__li__person">
-            <img class="AllActivity__fullDescription__ul__li__person__img" v-bind:src=" i.person.image" />
-            <div>
-              <div class="AllActivity__fullDescription__ul__li__person__name">{{ i.person.name }}</div>
-              <div class="AllActivity__fullDescription__ul__li__person__job">{{  i.person.job }}</div>
+              <div class="name">{{ i.person.name }}</div>
+              <div class="job">{{  i.person.job }} {{ i.person.country}}</div>
             </div>
           </div>
         </li>
@@ -52,6 +30,11 @@
 import moment from 'moment'
 export default {
   name: 'AllActivity',
+  filters: {
+    dataFilter: function (value) {
+      return moment(String(value)).format('DD.MM.YY')
+    }
+  },
   data () {
     return {
       message: '',
@@ -62,18 +45,19 @@ export default {
       tomorrow: moment(new Date()).add(1, 'days')
     }
   },
-  components: {
-    Event
+  computed: {
+    getToday () {
+      return this.event.filter(x => this.boolToday(x.event.date))
+    },
+    getName () {
+      return this.event.filter(x => this.boolName(x.person.name, this.message))
+    }
   },
   mounted () {
     this.load()
     this.type()
   },
-  filters: {
-    dataFilter: function (value) {
-      return moment(String(value)).format('DD.MM.YY')
-    }
-  },
+
   methods: {
     boolToday: function (val2) {
       if (this.today.format('DD.MM.YY') === moment(String(val2)).format('DD.MM.YY')) {
@@ -83,7 +67,6 @@ export default {
       }
     },
     boolName: function (value, message) {
-      console.log(message)
       let reg = new RegExp('(' + message + ')+', 'ig')
       if (value.match(reg)) {
         return true
@@ -91,7 +74,7 @@ export default {
         return false
       }
     },
-    del: function (id) {
+    deleteEvent: function (id) {
       this.api.eventDelete(id)
         .then(this.load())
     },
@@ -107,25 +90,17 @@ export default {
           this.types = data
         })
     }
-  },
-  computed: {
-    getToday () {
-      return this.event.filter(x => this.boolToday(x.event.date))
-    },
-    getName () {
-      return this.event.filter(x => this.boolName(x.person.name,this.message))
-    }
   }
 }
 </script>
 <style lang="scss" >
 .AllActivity{
-  &__main{
+  .main{
     font-size: 15px;
     color: gray;
     margin-bottom: 20px;
   }
-  &__filter{
+  .filter{
     padding: 10px;
     font-size: 16px;
   }
@@ -136,11 +111,11 @@ export default {
   padding-top: 0;
   margin: 40px 20px;
   margin-top: 10px;
-  &__fullDescription{
+  .fullDescription{
     display:flex;
-    &__ul{
+    .ul{
       padding:0;
-      &__li{
+      .li{
         background:white;
         margin: 20px 0;
         padding: 20px;
@@ -148,21 +123,21 @@ export default {
         flex-direction: row;
         display:flex;
         list-style:none;
-        &__person{
+        .person{
           display: flex;
           align-items: flex-end;
         }
-        &__dateTime{
+        .dateTime{
           margin-right:20px;
           display:flex;
           flex-direction:row;
-          &__time{
-            &__p{
+          .time{
+            .p{
               margin:0;
             }
           }
-          &__date{
-            &__p{
+          .date{
+            .p{
               font-weight:bold;
             }
           }
@@ -182,21 +157,21 @@ export default {
             font-weight:bold;
             margin-right:20px;
           }
-        &__description{
+        .description{
           text-align: left;
           margin-top::10px;
         }
-        &__person{
+        .person{
           margin-top:20px;
           flex-basis: 100%;
-          &__name{
+          .name{
             display: flex;
           }
-          &__job{
+          .job{
             color:#7575758f;
                 font-size: 13px;
           }
-          &__img{
+          .img{
             border: 1px solid #cdcaca45;
             background:white;
             padding:1px;
@@ -204,18 +179,15 @@ export default {
           }
         }
       }
-    }
-  }
-  .important{
+    .important{
     .delete{
       background:#f7a7a7;
       color:white;
       padding: 4px;
     }
-
     background:#f7a7a7;
     color:white;
-    .AllActivity__fullDescription__ul__li__dateTime{
+    .dateTime{
       background:white;
       color:black;
       height: max-content;
@@ -225,8 +197,8 @@ export default {
       padding: 3px;
     }
   }
-.none{
-  display:none;
-}
+    }
+  }
+
 }
 </style>
