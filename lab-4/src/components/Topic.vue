@@ -1,14 +1,14 @@
 <template>
   <div class="Topic">
-    <h1 class="Topic__main" >Сегодня {{getToday.length}} мероприятий </h1>
+    <h1 class="Topic__main" >Сегодня  {{getToday.length}} мероприятий </h1>
     <ul class="Topic__ulToday Topic__ul">
-      <h1 class="Topic__title title__today">Сегодня {{getToday.length}}</h1>
+      <h1 class="Topic__title title__today">Сегодня <span class="count"> - {{getToday.length}}</span></h1>
       <li class="Topic__ulToday__li Topic__ul__li" v-for="i in getToday" :key="i.id" v-bind:class="[{ important: i.important}, { today: boolToday(i.event.date)}]">
       <Day :index="i.event.type-1" :date="i.event.date" :time="i.event.time" :name="i.person.name" :description="i.event.description" :job="i.person.job" :image="i.person.image" :country="i.person.country "></Day>
       </li>
     </ul>
     <ul class="Topic__ulTomorrow Topic__ul">
-      <h1 class="Topic__title title__tomorrow">Завтра {{getTomorrow.length}}</h1>
+      <h1 class="Topic__title title__tomorrow">Завтра <span class="count"> - {{getTomorrow.length}}</span></h1>
       <li class="Topic__ulTomorrow__li Topic__ul__li" v-for="i in getTomorrow" :key="i.id" v-bind:class="[{ important: i.important},{ tomorrow: boolTomorrow(i.event.date)}]">
        <Day :index="i.event.type-1" :date="i.event.date" :time="i.event.time" :name="i.person.name" :description="i.event.description" :job="i.person.job" :image="i.person.image" ></Day>
       </li>
@@ -72,17 +72,24 @@ export default {
 <style  lang="scss" scoped>
 .Topic{
   &__title{
-     border-bottom:1px solid;
-     margin: 0 10px;
+    font-size: 22px;
+    display: flex;
+    border-bottom:1px solid;
+    margin: 0 10px;
+    .count{
+      font-weight: normal;
+      color: #80808094;
+      margin-left: 10px;
+    }
   }
   &__main{
-        display: flex;
+    display: flex;
     flex-basis: 100%;
     flex-wrap: wrap;
     justify-content: center;
     font-size: 14px;
-    margin-bottom: 40px;
-    color: grey;
+    margin-bottom: 30px;
+    color: #80808094;
   }
     flex-basis: 100%;
     display: flex;
@@ -114,7 +121,7 @@ export default {
        justify-content: center;
        font-size: 14px;
        margin-bottom: 40px;
-       color: grey;
+       color: #80808094;
       }
       &__title{
        border-bottom: 1px solid;
@@ -130,7 +137,8 @@ export default {
         display: flex;
         &__li{
           margin:10px;
-          margin-top:50px;
+          margin-top: 90px;
+          margin-bottom: 70px;
           flex-basis: 40%;
         }
       }
