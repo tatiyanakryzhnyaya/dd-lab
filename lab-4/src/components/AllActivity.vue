@@ -5,12 +5,13 @@
     <div class ="fullDescription" >
       <ul class="ul" v-if=" event.length > 0">
         <li class="li"   v-for="i in getName" :key="i.id" v-bind:class="{ important: i.important}">
+          <div class="top">
           <div class="dateTime">
-            <span class="time p">{{i.event.date | dataFilter}} &minus; </span>
-            <span class="date p"> &nbsp;{{i.event.time}}</span>
+            {{i.event.date | dataFilter}}&nbsp; &minus; &nbsp;<span class="time"> &nbsp;{{i.event.time}}</span>
           </div>
           <div class="EventsType" v-if="types.length>0">{{types[i.event.type-1].name}}</div>
           <div class="btn"><button class="delete" v-on:click="deleteEvent(i.id)">Удалить</button></div>
+          </div>
           <div class="description">
             <p class="p">{{i.event.description }}</p>
           </div>
@@ -123,6 +124,10 @@ export default {
         flex-direction: row;
         display:flex;
         list-style:none;
+        .top{
+          flex-basis: 100%;
+          display: flex;
+        }
         .person{
           display: flex;
           align-items: flex-end;
@@ -131,15 +136,12 @@ export default {
           margin-right:20px;
           display:flex;
           flex-direction:row;
+          flex-basis: 260px;
+          display: flex;
+          justify-content: center;
+          font-size: 2vh;
           .time{
-            .p{
-              margin:0;
-            }
-          }
-          .date{
-            .p{
-              font-weight:bold;
-            }
+            font-weight:bold;
           }
         }
         .delete{
@@ -153,13 +155,22 @@ export default {
           }
         }
         .EventsType{
-            height: max-content;
-            font-weight:bold;
-            margin-right:20px;
-          }
+          height: max-content;
+          font-weight:bold;
+          margin-right:20px;
+          display: flex;
+          flex-basis: 100%;
+        }
+        .btn{
+          display: flex;
+          justify-content: flex-end;
+        }
         .description{
           text-align: left;
           margin-top::10px;
+          .p{
+            text-align: justify;
+          }
         }
         .person{
           margin-top:20px;
@@ -179,7 +190,7 @@ export default {
           }
         }
       }
-    .important{
+  .important{
     .delete{
       background:#f7a7a7;
       color:white;
@@ -191,14 +202,13 @@ export default {
       background:white;
       color:black;
       height: max-content;
-      padding: 3px;
+      padding: 3px 10px;
     }
     .EventsType{
       padding: 3px;
     }
   }
-    }
-  }
-
 }
+}
+  }
 </style>
