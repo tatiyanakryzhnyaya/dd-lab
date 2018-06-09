@@ -82,8 +82,8 @@ body {
 	display: flex;
     flex-direction: column;
 }
-.third{
-	margin: auto 0;
+.second_third .flex:last-child{
+	margin-bottom: 0;
 }
 .foot{
 	display: flex;
