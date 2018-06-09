@@ -10,8 +10,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 		background:black;
 	}
 	.container{
-		max-width: 900px;
-    	flex: 1 0 900px;
+		width: 900px;
 	}
 	.nav{
 		flex-basis: 35%;
@@ -84,6 +83,8 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	}
 	.list{
 		font-size: 1.2vw;
+    	display: flex;
+    	align-items: center;
 	}
 	.btn{
 		flex-basis: 13%;
@@ -136,6 +137,8 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	}
 	.list{
 		border-bottom: 1px solid #ededed;
+		display: flex;
+    	align-items: center;
 	}
 	.btn{
 		flex-basis: 100%;

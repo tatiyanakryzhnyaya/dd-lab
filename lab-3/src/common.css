@@ -34,6 +34,7 @@ body {
 .list{
     padding: 5px 15px 5px 15px;
     background: white;
+    height: 30px;
 }
 .sign_in{
 	flex-grow: 1;
@@ -43,20 +44,22 @@ body {
 .btn{
 	padding: 6px 15px 6px 15px;
 	border:none;
-	height: min-content;
+	height:30px;
+	padding: 3px 12px;
 }
 .sign_in .inp{
 	flex-basis: 84%;
 	margin-left: 10px;
-	height: min-content;
+	height: 30px;
 	border: none;
-	background: #ffffff8a;
+	background: #8a8a8a;
 	margin-right: 2%;
 }
 .content{
 	display:flex;
 	justify-content: space-between;
 	    height: max-content;
+	    height: -ms-max-content;
 }
 .first{
 	display: flex;
