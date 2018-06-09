@@ -33,7 +33,7 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	}
 
 	.first{
-		flex-basis: 22%;
+		flex-basis: 27%;
 	}
 	.first .flex{
 		display: flex;
@@ -46,11 +46,11 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	    flex-direction: column;
 	}
 	.second{
-		flex-basis: 76%;
+		flex-basis: 70%;
 		display: flex;
     	flex-wrap: wrap;
 	}
-	.second .flex:first-child{
+	.second_first{
 		display: flex;
     	flex-direction: row-reverse;
 
@@ -58,10 +58,10 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.second_second{    
 		display: flex;
         flex-direction: column;
-		flex-basis: 64%;
+		flex-basis: 70%;
 	}
 	.second_third{
-		flex-basis: 34%;
+		flex-basis: 27%;
 	    display: flex;
         flex-direction: column;
      }
