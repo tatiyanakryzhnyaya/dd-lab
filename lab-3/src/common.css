@@ -58,8 +58,8 @@ body {
 .content{
 	display:flex;
 	justify-content: space-between;
-	    height: max-content;
-	    height: -ms-max-content;
+	height: max-content;
+	height: -ms-max-content;
 }
 .first{
 	display: flex;
@@ -68,11 +68,9 @@ body {
 .flex{
 	margin-bottom: 20px;
 }
-.text{
-	display: flex; 
-    flex-direction: column;
-    flex:1;
-    justify-content: space-around;
+.second_first{
+	display: flex;
+	flex-direction: row-reverse;
 }
 .second{
 	justify-content: space-between;
@@ -93,6 +91,5 @@ body {
 	justify-content: space-between;
 }
 .image{
-	width: 100%;
-	flex:0;
+	-webkit-width: 100%;
 }

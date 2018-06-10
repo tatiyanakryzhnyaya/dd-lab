@@ -34,42 +34,49 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.first{
 		flex-basis: 27%;
 	}
-	.first .flex{
-		display: flex;
-	    flex: 1;
-	    flex-direction: column;
-	}
-	.second_third .flex{
-		display: flex;
-	    flex: 1;
-	    flex-direction: column;
-	}
 	.second{
 		flex-basis: 70%;
 		display: flex;
     	flex-wrap: wrap;
 	}
-	.second_first{
+	.first .flex{
 		display: flex;
-    	flex-direction: row-reverse;
-
-    }
-	.second_second{    
-		display: flex;
-        flex-direction: column;
+		flex-direction: column;
+	}
+	.second_second{
 		flex-basis: 70%;
 	}
+
 	.second_third{
 		flex-basis: 27%;
-	    display: flex;
-        flex-direction: column;
-     }
-
-
+	}
+	.second_third .flex{
+		display: flex;
+		flex-direction: column;
+	}
+	.image{
+		width: 100%;
+	}
+	.second_first .image{
+		width: auto;
+	}
+	.text{
+		display: flex;
+		flex-wrap: wrap;
+		-webkit-flex:1;
+		-moz-flex:1;
+	}
+	.second_second .text{
+		flex:1;
+	}
+	.second_third .flex{
+		-webkit-flex: 1;
+		-moz-flex:1;
+	}
 }
 
 @include media(">=phone", "<=desktop"){
-	body {
+body {
     	display: flex;
 		background:black;
 	}
@@ -99,27 +106,62 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
     .first .flex{
     	flex-direction: column;
         display: flex;
-        flex: 1;
+        -webkit-flex: 1;
+        -moz-flex:1;
     }
-
+     .text{
+    	-webkit-flex:1;
+    	-moz-flex:1;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+    }
 	.second{
 		display: flex;
+    	flex-basis: 49%;
     	flex-wrap: wrap;
 	}
-	.second .flex:first-child{
-		display: flex;
-    	flex-direction: column;
-    	flex-basis: 100%;
-
-    }
-    .first, .second, .second_second, .second_third{
+	.first{
 		flex-basis: 49%;
+		-ms-flex:1;
+		margin:0  20px 0 0 ;
 	}
-	 .third{
-     	margin: 1px 0;
-     }
+	.second_first{
+		flex-direction: column;
+		flex-basis: 100%;
+	}
+	.second_second{
+		width: 48%;
+	}
+	.second_second .text{
+		-ms-flex:1;
+	}
+	.second_third{
+		width: 48%;
+	}
+	.image{
+		width: 100%;
 
-	
+	}
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+	   .second_third .image{
+			height: 20vh;
+		}
+		.first .image{
+			height: 50vh;
+			flex:1;
+		}
+		.first .flex{
+			flex:1;
+		}
+		.first .flex:first-child .text{
+			padding-bottom: 40px;
+		}
+		.first .text{
+			flex: 1;
+			justify-content: flex-start;
+		}
+	} 
 }
 
 @include media("<phone"){
@@ -157,7 +199,10 @@ $breakpoints:(phone:800px, tablet:1000px, desktop:1000px);
 	.second_first .flex{
 		flex-direction: column;
 	}
-	.second_second{
+	.second_second, .second_first{
 		flex-direction: column;
+	}
+	.image{
+		width: 100%;
 	}
 }
