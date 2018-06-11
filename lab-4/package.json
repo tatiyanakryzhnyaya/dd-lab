@@ -11,9 +11,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
     "axios": "^0.18.0",
+    "font-awesome": "^4.7.0",
     "moment": "^2.22.2",
     "vue": "^2.5.2",
+    "vue-awesome": "^2.3.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
