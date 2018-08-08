@@ -1,0 +1,233 @@
+#root{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+}
+.p{
+	margin: 0;
+}
+.label{
+	width: 50%;
+}
+
+.none{
+	display: none;
+}
+.fa{
+	color: #023553;
+
+}
+.fa:hover{
+	color: black;
+}
+/*
+////////////////////////////////
+//       Component App        //
+////////////////////////////////
+*/
+.App{
+	max-width: 1200px;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+}
+.content {
+	width: 45%;
+	margin: 0 auto;
+	padding: 15px;
+	padding-top: 0px;
+}
+
+.action-with-content{
+	color: #ffffff;
+	font-family: serif;
+	font-size: 20px;
+	padding: 15px;
+	background: #023553;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	margin-top: 15px;
+}
+.sidebar{
+	width: 45%;
+    margin: 0 auto;
+    padding: 15px;
+}
+/*
+////////////////////////////////
+//    Component HeroesList    //
+////////////////////////////////
+*/
+.heroes-list{
+	display: flex;
+	list-style: none;
+	flex-direction: column;
+	padding: 15px 0;
+	margin: 15px auto;
+    margin-top: 0px;
+}
+.heroes-list__card{
+	display: flex;
+	flex-direction: row;
+	align-items: start;
+	justify-content: space-between;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	flex-wrap: wrap;
+}
+.heroes-list__ditails{
+	margin: 5px;
+	width: 86%;
+	text-align: left;
+}
+.heroes-list__card .button-default .btn{
+	background: none;
+	outline: none;
+	padding: 5px;
+}
+
+.heroes-list__edit-hero{
+	background: none;
+	border: 0px;
+	cursor: pointer;
+	margin: 5px 10px 5px 0;
+	outline: none;
+	padding: 0;
+	color: grey;
+}
+.heroes-list__photo{
+	width: 10%;
+	margin: 5px;
+}
+.heroes-list-button-group{
+	display: flex;
+}
+.heroes-list__card:hover{
+	box-shadow: 0px 0px 1px 0px #9d9d9d;
+}
+.heroes-list__edit-hero:hover{
+	border-bottom: 1px dashed #023553;
+	color: #023553;
+}
+.heroes-list__card .btn:hover{
+	color: black;
+}
+.heroes-list__edit-hero .-active{
+	border-bottom: 1px dashed #9d9d9d;
+}
+/*
+////////////////////////////////
+//         EditBlock          //
+////////////////////////////////
+*/
+
+.edit-block{
+	width: 100%;
+    display: flex;
+	margin: 5px;
+	margin-top: 25px;
+	flex-wrap: wrap;
+	align-items: center;
+    min-height: 84px;
+}
+
+.edit-block .label{
+	width: max-content;
+	margin: 5px;
+	color: grey;
+	font-size: 12px;
+}
+.edit-block__edit-name, 
+.edit-block__edit-why, 
+.edit-block__edit-photo{
+	padding: 0 5px;
+	padding: 5px;
+}
+.edit-block .label{
+	margin-right: 10px;
+}
+.edit-block .fa{
+	margin: 5px ;
+	font-size: 14px;
+	margin-left: 20px;
+}
+
+/*
+////////////////////////////////
+//    Component FormAdded     //
+////////////////////////////////
+*/
+.form-added{
+	padding: 15px 0;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	box-shadow: 0px 0px 3px 0px #9d9d9d;
+    align-items: center;
+}
+.form-added__photo{
+	display: flex;
+	flex-direction: row;
+    width: 54%;
+    justify-content: space-between;
+}
+.form-added__photo .form-added__new-hero{
+	height: max-content;
+	margin-left: 0px;
+	width: initial;
+    margin-right: 0;
+}
+.form-added__img{
+	width: 20%;
+	height: 20%;
+	margin: 15px;
+    margin-right: 0;
+}
+.form-added__new-hero{
+	padding: 5px 10px;
+	padding: 5px 10px;
+	margin: 15px;
+	width: 50%;
+}
+
+
+/*
+////////////////////////////////
+//   Component ButtonDefult   //
+////////////////////////////////
+*/
+.button-default{
+	margin: 5px;
+}
+
+.btn{
+	border-radius: 5px;
+	border: none;
+	background: #e7e7e7;
+	padding: 5px 30px;
+	font-size: 15px;
+	font-family: serif;
+	cursor: pointer;
+	color: #023553;
+}
+
+.btn:hover{
+	color: white;
+	background: #023553; 
+}
+
+/*
+////////////////////////////////
+//         media query        //
+////////////////////////////////
+*/
+@media(max-width: 1085px){
+	.edit-block{
+		min-height: 174px;
+		width: 290px;
+	}
+}
