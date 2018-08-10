@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 
 class ButtonDefault extends Component {
 	renderClick = () => {
+		let src;
+		
+		if(document.getElementsByClassName("form-added__img").length == 0){
+			src ="";
+		}else {
+			src = document.getElementsByClassName("form-added__img")[0].getAttribute('src');
+		}
 		let object ={
 			hero : this.props.name,
 			text :this.props.why,
-			photo :this.props.photo,
+			photo :src,
 		};
 		let index = this.props.index;
 		this.props.clickHandler(object, index);
-		if(typeof this.props.clear !== 'undefined'){
-			this.props.clear();
-		}
 	}
 
 	render(){

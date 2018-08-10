@@ -32,6 +32,10 @@ class App extends Component {
 	}
 	
 	updateHeroesList = (obj) => {
+		for(let key in obj){
+			document.getElementsByClassName(key)[0].className = "form-added__new-hero " + key;
+		};
+		document.getElementsByClassName("form-added__img")[0].remove();
 		let newArray = this.state.heroes;
 		newArray.push(obj);
 		this.setState({heroes : newArray});
